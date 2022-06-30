@@ -1,0 +1,132 @@
+/* Header styling */
+#header {
+    background-size: cover;
+    background-position-y: 40%;
+    color:rgb(255, 255, 255);
+    background-color: #0070d2;
+    position:relative !important;
+}
+
+/* h1 style for city name */
+#header h1 {
+    font-size: 400%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    text-shadow: 0px 3px 3px rgba(255, 255, 255, 0.523);
+}
+
+/*Jumbotron padding and border */
+.jumbotron {
+    padding: 1rem;
+    border-radius: 0;
+}
+
+/* City Search width */
+#search-city {
+    width:80%;
+}
+
+/* fontawesome magnifying glass icon */
+#search-button-icon {
+    width: 15px;
+    display:inline-block;
+}
+
+/*Current weather padding */
+#current-weather {
+    padding-left: 15px;
+}
+
+/* clear storage below list of cities */
+#clear-storage {
+    color: #0275d8;
+    text-decoration: none;
+    font-size: .88em;
+    margin: .5em 0em 0em .5em;
+}
+
+/* Weather card styling */
+.weather-card {
+    width: 9rem;
+    background-color: #0275d8;
+    color: white;
+    text-align: center;
+}
+
+/* UV coloring scheme for UV display */
+.uv-favorable {
+    background-color: rgb(29, 152, 29);
+    border-radius: 50px;
+    border-style: dotted;
+    border-width: .5%;
+    color: white;
+}
+
+.uv-moderate{
+    background-color: orange;
+    border-radius: 50px;
+    border-style: dotted;
+    border-width: .5%;
+    color: white;
+    
+}
+.uv-severe{
+    background-color: rgb(168, 0, 0);
+    border-radius: 50px;
+    border-style: dotted;
+    border-width: .5%;
+    color: white;
+}
+
+/*changes the color based on temp */
+
+.temp-moderate {
+    color: rgb(79, 136, 104);
+    font-size: 3.85em;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bolder;
+}
+
+.temp-cold {
+    color: rgb(45, 104, 166);
+    font-size: 3.85em;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bolder;
+}
+
+.temp-hot {
+    color: rgb(183, 0, 0);
+    font-size: 3.85em;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bolder;
+}
+
+#footer {
+    font-size: small;
+    font-weight: 600;
+    font-variant: small-caps;
+    font-family: cursive;
+    margin-top: 5%;
+    margin-left: 1%;
+}
+
+/* Media queries */
+@media only screen and (max-width: 992px) {
+    #search-city{
+        width:100%;
+    }
+    #search-button{
+        width:100%;
+    }
+}
+@media only screen and (max-width: 575px) {
+
+    #fiveDayForecastUl{
+        justify-content: center;
+    }
+}

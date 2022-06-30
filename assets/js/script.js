@@ -166,7 +166,6 @@ var getFiveDayForecast = (event) => {
             let timeZoneOffsetHours = timeZoneOffset / 60 / 60;
             let thisMoment = moment.unix(dayTimeUTC).utc().utcOffset(timeZoneOffsetHours);
             let iconURL = "https://openweathermap.org/img/w/" + dayData.weather[0].icon + ".png";
-            console.log(dayData)
 
             // Only displaying mid-day forecasts //
 

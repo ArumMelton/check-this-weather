@@ -34,7 +34,9 @@ var getCurrentConditions = (event) => {
         saveCity(city);
         $('#search-error').text("");
         // Create icon for the current weather using Open Weather Maps
-        let currentWeatherIcon="https://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
+        let currentWeatherIcon = "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
+        let latitude = response.coord.lat;
+        let longitude = response.coord.lon;
         // Offset UTC timezone - using moment.js
         let currentTimeUTC = response.dt;
         let currentTimeZoneOffset = response.timezone;
@@ -48,6 +50,7 @@ var getCurrentConditions = (event) => {
         getFiveDayForecast(event);
         // Set the header text to the found city name
         $('#header-text').text(response.name);
+       
         
         
         
@@ -56,36 +59,37 @@ var getCurrentConditions = (event) => {
               
                 <div class="card-body p-8">
                   <div class="d-flex">
-                    <h6 class="flex-grow-1">${response.name}</h6>
-                    <h6>${currentMoment.format("(MM/DD/YY)")}</h6>
+                    <h3 class="flex-grow-1">${response.name}</h3>
+                    <h4>${currentMoment.format("(MM/DD/YYYY)")}</h4>
                   </div>
                   <div class="d-flex flex-column text-center mt-5 mb-4">
-                    <h6  class="display-4 mb-0 class="h6" font-weight-bold">${response.main.temp} \u00B0 F</h6>
-                    <h7>Feels like: ${response.main.feels_like} \u00B0 F</h7>
-                    <h8> Barometric Pressure: ${response.main.pressure} Pa</h8>
+                    <h5 id="mtemp" class="display-4 mb-0 style="font-weight-bolder">${response.main.temp}\u00B0 F</h5>
+                    <h6 id="h7" >Feels like: ${response.main.feels_like}\u00B0 F</h6>
                   </div>
                   <div class="d-flex align-items-center">
-                    <div class="flex-grow-1" style="font-size: 1rem;">
-                      <div><i class="fas fa-wind fa-fw" style="color: #868B94;"></i> <span class="ms-1">Wind Speed ${response.wind.speed} mph
+                    <div class="flex-grow-1" style="font-size: .8rem;">
+                      <div><i class="fas fa-wind fa-fw" style="color: #868B94;"></i> <span class="ms-1">Wind Speed: ${response.wind.speed} mph
                         </span></div>
-                      <div><i class="fas fa-tint fa-fw" style="color: #868B94;"></i> <span class="ms-1">Humidity ${response.main.humidity}%</span>
+                      <div><i class="fas fa-tint fa-fw" style="color: #868B94;"></i> <span class="ms-1">Humidity: ${response.main.humidity}%</span>
                       </div>
                       <div><i class="fas fa-sun fa-fw" style="color: #868B94;"></i> <span class="ms-1" id="uvIndex">UV Index</span>
+                      </div>
+                      <div><i class="fas fa-thermometer-empty fa-fw" style="color: #868B94;"></i> <span class="ms-1">Barometric Pressure: ${response.main.pressure}Pa</span>
+                      </div>
+                      <div><i class="fab fa-cloudversify" style="color: #868B94;"></i> <span class="ms-1">Cloud Cover: ${response.clouds.all}%</span>
                       </div>
                     </div>
                     <div>
                     <img src="${currentWeatherIcon}"
-                        width="150px">
+                        width="60px">
+                        <h6 style="text-transform: uppercase;"> ${response.weather[0].description} </h6>
                     </div>
                   </div>
         </div>`;
-      console.log(response.weather.main);
-        
         // Append the results to the DOM
         $('#current-weather').html(currentWeatherHTML);
         // Get the latitude and longitude for the UV search from Open Weather Maps API
-        let latitude = response.coord.lat;
-        let longitude = response.coord.lon;
+        
         let uvQueryURL = ("https://api.openweathermap.org/data/2.5/onecall?lat=" + latitude + "&lon=" + longitude + "&appid=" + apiKey);
         // API solution for Cross-origin resource sharing (CORS) error: https://cors-anywhere.herokuapp.com/
         
@@ -132,16 +136,19 @@ var getFiveDayForecast = (event) => {
             let timeZoneOffsetHours = timeZoneOffset / 60 / 60;
             let thisMoment = moment.unix(dayTimeUTC).utc().utcOffset(timeZoneOffsetHours);
             let iconURL = "https://openweathermap.org/img/w/" + dayData.weather[0].icon + ".png";
+            console.log(dayData)
             // Only displaying mid-day forecasts
             if (thisMoment.format("HH:mm:ss") === "11:00:00" || thisMoment.format("HH:mm:ss") === "12:00:00" || thisMoment.format("HH:mm:ss") === "13:00:00") {
                 fiveDayForecastHTML += `
                 <div class="weather-card card m-2 p0">
                     <ul class="list-unstyled p-3">
-                        <li>${thisMoment.format("MM/DD/YY")}</li>
-                        <li class="weather-icon"><img src="${iconURL}"></li>
-                        <li>Temp: ${dayData.main.temp}&#8457;</li>
+                        <li style="font-size: 18px">${thisMoment.format("MM/DD/YYYY")}</li>
+                        <li class="weather-icon"><img src="${iconURL}" width="35px"></li>
+                        <li id="h8" style="text-transform: uppercase;">${dayData.weather[0].description}</li>
                         <br>
-                        <li>Humidity: ${dayData.main.humidity}%</li>
+                        <li id="h9">Temp: ${dayData.main.temp}&#8457;</li>
+                        <li id="h9">Wind: ${dayData.wind.speed} mph</li>
+                        <li id="h9">Humidity: ${dayData.main.humidity}%</li>
                     </ul>
                 </div>`;
             }

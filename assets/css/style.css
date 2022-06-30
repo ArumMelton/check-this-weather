@@ -1,7 +1,7 @@
 /* Styles for website */
 
 /* Header styling */
-#header{
+#header {
     background-size: cover;
     background-position-y: 40%;
     color:rgb(255, 255, 255);
@@ -10,7 +10,7 @@
 }
 
 /* h1 style for city name */
-#header h1{
+#header h1 {
     font-size: 400%;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-align: center;
@@ -29,13 +29,13 @@
 }
 
 /* City Search width */
-#search-city{
+#search-city {
     width:80%;
 }
 
 /* fontawesome magnifying glass icon */
-#search-button-icon{
-    width:15px;
+#search-button-icon {
+    width: 15px;
     display:inline-block;
 }
 
@@ -53,7 +53,7 @@
 }
 
 /* Weather card styling */
-.weather-card{
+.weather-card {
     width: 9rem;
     background-color: #0275d8;
     color: white;
@@ -61,38 +61,51 @@
 }
 
 /* UV coloring scheme for UV display */
-.uv-favorable{
-    background-color: green;
-    border-radius: 10px;
+.uv-favorable {
+    background-color: rgb(29, 152, 29);
+    border-radius: 50px;
+    border-style: dotted;
+    border-width: .5%;
     color: white;
 }
 
 .uv-moderate{
     background-color: orange;
-    border-radius: 10px;
+    border-radius: 50px;
+    border-style: dotted;
+    border-width: .5%;
     color: white;
+    
 }
 
 .uv-severe{
-    background-color: red;
-    border-radius: 10px;
+    background-color: rgb(168, 0, 0);
+    border-radius: 50px;
+    border-style: dotted;
+    border-width: .5%;
     color: white;
 }
-/* coloring for main temp display */
-#temp-cold {
-    color:rgb(0, 90, 158);
-    
-   
+
+
+#h7 {
+    font-size: medium;
 }
 
-#temp-favorable {
-    color:rgb(45, 174, 71);
-    
+#h8 {
+    font-size: x-small;
 }
 
-#temp-severe {
-    color:rgb(191, 87, 32);
-    
+#h9 {
+    font-size: smaller;
+}
+
+#footer {
+    font-size: small;
+    font-weight: 600;
+    font-variant: small-caps;
+    font-family: cursive;
+    margin-top: 5%;
+    margin-left: 1%;
 }
 
 /* Media queries */

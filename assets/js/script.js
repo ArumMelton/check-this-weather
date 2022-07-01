@@ -64,14 +64,14 @@ var getCurrentConditions = (event) => {
                   <h5 id="mtemp" class="display-4 mb-0 style="font-weight-bolder"> ${response.main.temp}\u00B0F</h5>
                     <h6 id="mtemp">Feels Like: ${response.main.feels_like}\u00B0F</h6>
                     <span style="font-size: xx-small" id="max-min">
-                    High: 
+                    High:
                     <br>
                     Low:
                     </span>
                   </div>
                   <div class="d-flex align-items-center">
                     <div class="flex-grow-1" style="font-size: .8rem;">
-                    
+
                       <div><i class="fas fa-wind fa-fw" style="color: #868B94;"></i> <span class="ms-1">Wind Speed: ${response.wind.speed} mph
                         </span></div>
                       <div><i class="fas fa-tint fa-fw" style="color: #868B94;"></i> <span class="ms-1">Humidity: ${response.main.humidity}%</span>
@@ -95,7 +95,7 @@ var getCurrentConditions = (event) => {
         $('#current-weather').html(currentWeatherHTML);
 
         //query to get UV data //
-        
+
         let uvQueryURL = ("https://api.openweathermap.org/data/2.5/onecall?lat=" + latitude + "&lon=" + longitude + "&units=" + "imperial" + "&appid=" + apiKey);
 
         fetch(uvQueryURL)
@@ -110,9 +110,9 @@ var getCurrentConditions = (event) => {
             // changes main temp color based on temperature data //
 
             $('#mainTemp').html('<div id="mtemp" style="font-weight-bolder"> ${response.main.temp} \u00B0F</div>');
-            if (mainTemp>=50 && mainTemp<79){
+            if (mainTemp>=53 && mainTemp<=79){
                 $('#mtemp').attr("class", "temp-moderate");
-            } else if (mainTemp<49){
+            } else if (mainTemp<=52){
                 $('#mtemp').attr("class", "temp-cold");
             } else if (mainTemp>=80){
                 $('#mtemp').attr("class", "temp-hot");
